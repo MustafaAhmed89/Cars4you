@@ -35,15 +35,22 @@ $$;
 
 -- Admin check used across RLS policies. SECURITY DEFINER so it bypasses RLS on
 -- profiles and avoids recursive policy evaluation.
+-- NOTE: language plpgsql (not sql) so the body is validated at call time, not at
+-- creation. This helper lives in the foundation migration but references
+-- public.profiles, which is created later (0003); a `language sql` body would fail
+-- to create here. security definer functions are never inlined, so there is no
+-- planner cost to using plpgsql.
 create or replace function public.is_admin()
 returns boolean
-language sql
+language plpgsql
 stable
 security definer
 set search_path = public
 as $$
-  select exists (
+begin
+  return exists (
     select 1 from public.profiles
     where id = auth.uid() and role = 'admin'
   );
+end;
 $$;

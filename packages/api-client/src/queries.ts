@@ -162,7 +162,9 @@ export async function markListingSold(client: Cars4youClient, id: string) {
 export async function createEnquiry(client: Cars4youClient, listingId: string, message?: string) {
   const { data, error } = await client.rpc('create_enquiry', {
     p_listing_id: listingId,
-    p_message: message ?? null,
+    // p_message is an optional RPC arg (text default null); when undefined it is
+    // omitted from the request and the DB default applies.
+    p_message: message,
   });
   if (error) throw error;
   return data?.[0] ?? null; // { enquiry_id, seller_name, seller_phone }
