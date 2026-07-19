@@ -55,9 +55,12 @@ later with full context. Append newest entries at the bottom.
 - `pnpm typecheck` — 5/5 packages pass.
 - `pnpm lint` — 4/4 (config has no lint task) pass.
 
+**Source control**
+- Initial Phase-0 commit (`4729c9e`, 64 files) pushed to
+  `github.com/MustafaAhmed89/Cars4you` on `main`. Git Credential Manager had cached
+  HTTPS auth, so no `gh` CLI was needed.
+
 **Pending (needs the user / machine setup)**
 - Install Docker Desktop → `pnpm db:start` to validate migrations + seed against a
   real DB, then `pnpm db:types` to regenerate types.
-- Install/authenticate `gh` (or provide a PAT) for `MustafaAhmed89` → create the
-  `Cars4you` repo, add remote, push.
 - Run the app on a simulator/device: `pnpm --filter mobile dev`.
