@@ -1,3 +1,8 @@
+# node-linker must live here for pnpm v10+ (the key in .npmrc is ignored by
+# pnpm 11). Expo/Metro require the hoisted (flat) layout under pnpm — otherwise
+# tools like @expo/cli can't resolve transitive deps such as metro-runtime.
+nodeLinker: hoisted
+
 packages:
   - "apps/*"
   - "packages/*"
