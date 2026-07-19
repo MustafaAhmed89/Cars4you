@@ -1,0 +1,4 @@
+{
+  "extends": "@cars4you/config/typescript/base",
+  "include": ["src"]
+}

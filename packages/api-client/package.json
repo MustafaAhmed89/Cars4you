@@ -1,0 +1,27 @@
+{
+  "name": "@cars4you/api-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"no tests\" && exit 0",
+    "clean": "rimraf dist .turbo"
+  },
+  "dependencies": {
+    "@cars4you/types": "workspace:*",
+    "@cars4you/validation": "workspace:*",
+    "@supabase/supabase-js": "^2.47.10"
+  },
+  "devDependencies": {
+    "@cars4you/config": "workspace:*",
+    "eslint": "^9.17.0",
+    "typescript": "^5.7.3"
+  }
+}
